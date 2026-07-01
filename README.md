@@ -1,19 +1,48 @@
-# Falmouth Sailing Decision Pack Web App
+# Falmouth Sailing Decision Pack v2
 
-A static, self-contained web app for reviewing a Falmouth sailing decision pack.
+A static GitHub Pages app for Falmouth sailing planning.
 
-## How to run
+## What changed
 
-1. Unzip the folder.
-2. Open `index.html` in any modern browser.
-3. No server or internet connection is required for the charts and tables.
+- Today and tomorrow labels update automatically every day.
+- Hourly wind attempts to load live from Open-Meteo in knots for Falmouth.
+- Tide sections show today and tomorrow separately.
+- The tidal curve is interactive: hover/tap the curve to see time and height.
+- The tidal-stream atlas images added in the chat are included as a scrollable gallery.
+- Official source buttons are included for Met Office shipping forecast, inshore waters, pressure charts and ADMIRALTY EasyTide.
 
-## How to update the forecast
+## Important limitation
 
-Edit `data.js`. The app reads all forecast, wind, tide and pressure-card data from `window.SAILING_DATA`.
+GitHub Pages is static. It cannot safely fetch or scrape the latest official Met Office marine text, ADMIRALTY EasyTide tide tables, or Met Office pressure-chart images directly in the browser. Those services either do not expose a simple public no-key browser API or may block cross-origin browser requests.
 
-## Limitations
+The app therefore:
 
-- The pressure-chart section links to the official Met Office chart page rather than scraping or embedding live chart images. This avoids fragile scraping/CORS issues.
-- The tidal curve is interpolated from published high and low waters and is suitable for visual planning only.
-- Refresh all marine sources before departure.
+1. fetches live wind from Open-Meteo as a planning aid;
+2. links directly to official Met Office / EasyTide sources;
+3. keeps official tide and forecast fallback data in `data.js`, which you can update manually.
+
+If you want fully automatic official-source refreshes, the next step is to move from GitHub Pages to a small backend/proxy, for example Netlify Functions, Cloudflare Workers, or a server app.
+
+## Updating on GitHub
+
+Upload/replace these files at the top level of your repository:
+
+- `index.html`
+- `styles.css`
+- `app.js`
+- `data.js`
+- the `assets` folder
+- `README.md`
+
+Do not upload the ZIP itself.
+
+## Daily manual update
+
+Edit `data.js`:
+
+- `shipping`
+- `inshore`
+- `tides.today`
+- `tides.tomorrow`
+
+The app will automatically label those entries as today and tomorrow.

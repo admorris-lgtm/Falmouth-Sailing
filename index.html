@@ -8,112 +8,102 @@
 </head>
 <body>
   <header class="hero">
-    <div class="hero__content">
-      <p class="date">Thursday 2 July 2026 · Falmouth</p>
-      <h1>Sailing decision pack</h1>
-      <p class="subtitle">Shipping forecast, pressure charts, hourly wind, tide table and interactive tidal curve for making your own go / no-go judgment.</p>
-      <div class="hero__actions">
-        <a class="button button--primary" href="#decision">Open decision checklist</a>
-        <a class="button" href="https://weather.metoffice.gov.uk/maps-and-charts/surface-pressure" target="_blank" rel="noreferrer">Met Office pressure charts</a>
+    <div>
+      <p class="date-line" id="dateLine">Falmouth · loading dates…</p>
+      <h1>Falmouth sailing decision pack</h1>
+      <p class="subtitle">Today and tomorrow: official forecast links, live hourly wind, tide tables, an interactive tidal curve, pressure-chart access and the tidal-stream atlas you added.</p>
+      <div class="hero-actions">
+        <a href="#today" class="button primary">Today</a>
+        <a href="#tomorrow" class="button">Tomorrow</a>
+        <a href="#streams" class="button">Tidal streams</a>
       </div>
     </div>
-    <aside class="status-card" aria-label="Headline conditions">
-      <span class="status-card__label">Headline</span>
-      <strong>Improving day, but gusty early</strong>
-      <p>Local mean wind mostly 9–11 kt, with early gusts over 20 kt easing later. Inshore forecast still flags W/NW F4–6 and a strong wind warning.</p>
+    <aside class="notice">
+      <strong>Live data boundary</strong>
+      <p>This static GitHub Pages app can fetch live open weather data. Official Met Office marine text, Admiralty EasyTide and Met Office pressure images do not provide a simple public no-key browser feed, so those sections link to the official source and use the editable fallback data in <code>data.js</code>.</p>
     </aside>
   </header>
 
   <main>
-    <section class="grid two">
+    <section class="source-bar" aria-label="Official source links">
+      <a target="_blank" rel="noreferrer" href="https://weather.metoffice.gov.uk/specialist-forecasts/coast-and-sea/shipping-forecast">Met Office shipping forecast</a>
+      <a target="_blank" rel="noreferrer" href="https://weather.metoffice.gov.uk/specialist-forecasts/coast-and-sea/inshore-waters-forecast">Met Office inshore waters</a>
+      <a target="_blank" rel="noreferrer" href="https://weather.metoffice.gov.uk/maps-and-charts/surface-pressure">Met Office pressure charts</a>
+      <a target="_blank" rel="noreferrer" href="https://easytide.admiralty.co.uk/">ADMIRALTY EasyTide</a>
+    </section>
+
+    <section class="grid two top-panels">
       <article class="panel">
-        <div class="panel__header">
-          <h2>Shipping forecast · Plymouth</h2>
-          <a href="https://weather.metoffice.gov.uk/specialist-forecasts/coast-and-sea/shipping-forecast" target="_blank" rel="noreferrer">Official source</a>
-        </div>
-        <p class="small">Issued 04:05 UTC+1, Wed 1 Jul 2026. Valid 06:00 Wed to 06:00 Thu.</p>
-        <dl class="forecast-list" id="shippingForecast"></dl>
+        <div class="panel-header"><span>Marine forecast</span><h2>Plymouth + inshore waters</h2></div>
+        <div id="forecastCards" class="forecast-cards"></div>
       </article>
-
-      <article class="panel warning">
-        <div class="panel__header">
-          <h2>Inshore waters</h2>
-          <a href="https://weather.metoffice.gov.uk/specialist-forecasts/coast-and-sea/print/inshore-waters-forecast" target="_blank" rel="noreferrer">Official source</a>
-        </div>
-        <p class="small">Lyme Regis to Land’s End including Isles of Scilly.</p>
-        <div id="inshoreForecast"></div>
-      </article>
-    </section>
-
-    <section class="panel" id="pressure">
-      <div class="panel__header">
-        <div>
-          <h2>Met Office surface pressure charts · next 48 hours</h2>
-          <p class="small">Use the buttons to track the sequence you need. The official page is the authoritative scrollable source.</p>
-        </div>
-        <a class="button button--small" href="https://weather.metoffice.gov.uk/maps-and-charts/surface-pressure" target="_blank" rel="noreferrer">Open official chart page</a>
-      </div>
-      <div class="pressure-strip" id="pressureStrip" role="list"></div>
-      <div class="pressure-note">
-        <strong>What to read:</strong> isobar spacing over the SW approaches, the timing of frontal rain clearing Cornwall, and whether high pressure/ridging reduces the gradient later in the day.
-      </div>
-    </section>
-
-    <section class="grid two">
       <article class="panel">
-        <div class="panel__header">
-          <h2>Hourly wind · knots</h2>
-          <a href="https://weather.metoffice.gov.uk/forecast/gbumk9zss" target="_blank" rel="noreferrer">Falmouth forecast</a>
-        </div>
-        <canvas id="windChart" width="900" height="420" aria-label="Hourly wind chart"></canvas>
-        <div class="legend"><span class="dot mean"></span>Mean wind <span class="dot gust"></span>Gust</div>
-      </article>
-
-      <article class="panel">
-        <div class="panel__header">
-          <h2>Tide table</h2>
-          <a href="https://www.premiermarinas.com/marinas/falmouth-marina/falmouth-tides" target="_blank" rel="noreferrer">Tide source</a>
-        </div>
-        <table>
-          <thead><tr><th>Time</th><th>Tide</th><th>Height</th></tr></thead>
-          <tbody id="tideTable"></tbody>
-        </table>
-        <div class="tide-summary" id="tideSummary"></div>
+        <div class="panel-header"><span>Pressure</span><h2>Next 48 hours</h2></div>
+        <p class="muted">Tap a card to open the official scrollable Met Office pressure-chart sequence. In the app this section is deliberately a source launcher rather than a scraped copy.</p>
+        <div class="pressure-strip" id="pressureStrip"></div>
       </article>
     </section>
 
-    <section class="panel">
-      <div class="panel__header">
-        <div>
-          <h2>Interactive tidal curve</h2>
-          <p class="small">Hover or tap the curve for approximate hourly height. Use official tide tables for navigation-critical decisions.</p>
-        </div>
-      </div>
-      <div class="chart-wrap">
-        <canvas id="tideChart" width="1100" height="430" aria-label="Tidal curve"></canvas>
-        <div class="tooltip" id="tooltip" hidden></div>
+    <section class="day-tabs" aria-label="Choose day">
+      <button class="tab active" data-day="today" id="todayTab">Today</button>
+      <button class="tab" data-day="tomorrow" id="tomorrowTab">Tomorrow</button>
+    </section>
+
+    <section id="today" class="day-section active" data-day-panel="today">
+      <div class="section-title"><span id="todayLabel">Today</span><h2>Wind and tide</h2></div>
+      <div class="grid two">
+        <article class="panel wide-chart">
+          <div class="panel-header"><span>Hourly wind</span><h3>Mean and gusts in knots</h3></div>
+          <div id="windStatusToday" class="statusline">Loading live wind…</div>
+          <div class="chart-wrap"><canvas id="windToday"></canvas></div>
+          <div class="table-scroll"><table id="windTableToday"></table></div>
+        </article>
+        <article class="panel">
+          <div class="panel-header"><span>Tides</span><h3>High/low waters + curve</h3></div>
+          <div class="table-scroll"><table id="tideTableToday"></table></div>
+          <div id="tideCurveToday" class="tide-curve"></div>
+        </article>
       </div>
     </section>
 
-    <section class="panel" id="decision">
-      <h2>Decision checklist</h2>
-      <div class="decision-grid">
-        <label><input type="checkbox"> Latest VHF / NAVTEX / MSI checked</label>
-        <label><input type="checkbox"> Latest Met Office shipping and inshore update checked</label>
-        <label><input type="checkbox"> Actual wind checked at harbour / exposed headland</label>
-        <label><input type="checkbox"> Sea state at Falmouth entrance visually assessed</label>
-        <label><input type="checkbox"> Route chosen with family comfort and shelter in mind</label>
-        <label><input type="checkbox"> 2 m draft pilotage checked for planned destination and return</label>
+    <section id="tomorrow" class="day-section" data-day-panel="tomorrow">
+      <div class="section-title"><span id="tomorrowLabel">Tomorrow</span><h2>Wind and tide</h2></div>
+      <div class="grid two">
+        <article class="panel wide-chart">
+          <div class="panel-header"><span>Hourly wind</span><h3>Mean and gusts in knots</h3></div>
+          <div id="windStatusTomorrow" class="statusline">Loading live wind…</div>
+          <div class="chart-wrap"><canvas id="windTomorrow"></canvas></div>
+          <div class="table-scroll"><table id="windTableTomorrow"></table></div>
+        </article>
+        <article class="panel">
+          <div class="panel-header"><span>Tides</span><h3>High/low waters + curve</h3></div>
+          <div class="table-scroll"><table id="tideTableTomorrow"></table></div>
+          <div id="tideCurveTomorrow" class="tide-curve"></div>
+        </article>
       </div>
-      <div class="judgment">
-        <h3>Planning read</h3>
-        <p>Depth looks favourable around the 07:36 high water. The weather trend looks improving, but the early window still has gusts around 20+ kt and the inshore forecast contains F4–6 wording. For an easy family sail, conditions look more comfortable from late morning into the afternoon if the latest official update confirms easing winds.</p>
-      </div>
+    </section>
+
+    <section id="streams" class="panel stream-panel">
+      <div class="panel-header"><span>Tidal streams</span><h2>NP254 Falmouth to Teignmouth atlas plates</h2></div>
+      <p class="muted">Scrollable gallery from the charts added to this chat. Use the buttons to jump through the plates; pinch/zoom works on iPhone.</p>
+      <div class="stream-controls" id="streamControls"></div>
+      <div class="stream-gallery" id="streamGallery"></div>
+    </section>
+
+    <section class="panel checklist">
+      <div class="panel-header"><span>Judgment aid</span><h2>Final checks before departure</h2></div>
+      <ul>
+        <li>Refresh Met Office shipping and inshore waters immediately before leaving.</li>
+        <li>Check whether any strong wind warning remains in force.</li>
+        <li>Compare actual harbour/nearby wind with forecast gusts.</li>
+        <li>Use the tidal stream plate closest to your time relative to high water Devonport.</li>
+        <li>For a family sail, treat gusts above F4/F5 comfort as a reason to shorten or stay sheltered.</li>
+      </ul>
     </section>
   </main>
 
   <footer>
-    <p>This is a planning aid, not a navigational authority. Refresh live marine forecasts before departure.</p>
+    <p>Static decision-support app. Not for navigation. Use official MSI, harbour information, tide tables and your own judgment.</p>
   </footer>
 
   <script src="data.js"></script>
