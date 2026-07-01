@@ -1,53 +1,24 @@
-# Falmouth Sailing Decision Pack v3
+# Falmouth Sailing Decision Pack v5
 
-A static GitHub Pages app for Falmouth sailing planning.
+This version is designed to draw fresh open data each time the page is opened.
 
-## What changed
+## Live data
 
-- Today and tomorrow are shown as two separate visible sections, and the labels update automatically every day.
-- Hourly wind attempts to load live from Open-Meteo in knots for Falmouth.
-- Tide sections show today and tomorrow separately.
-- The tidal curve is interactive: hover/tap the curve to see time and height.
-- The tidal-stream atlas images added in the chat are included as a scrollable gallery.
-- Official source buttons are included for Met Office shipping forecast, inshore waters, pressure charts and ADMIRALTY EasyTide.
+- Wind: Open-Meteo weather forecast, hourly, in knots.
+- Model tide curve and model high/low estimates: Open-Meteo Marine API `sea_level_height_msl`.
+- Sea state and model current summary: Open-Meteo Marine API wave/current variables.
+- Tidal-stream atlas plates: static images stored in the repository and loaded from raw GitHub URLs.
 
 ## Important limitation
 
-GitHub Pages is static. It cannot safely fetch or scrape the latest official Met Office marine text, ADMIRALTY EasyTide tide tables, or Met Office pressure-chart images directly in the browser. Those services either do not expose a simple public no-key browser API or may block cross-origin browser requests.
+The live tide values are modelled sea-level height above mean sea level, not official tide-table heights above chart datum. They are useful for shape, trend and timing context, but not for navigation-critical clearance decisions. Use official EasyTide/UKHO, harbour information, MSI and your own judgment before sailing.
 
-The app therefore:
+Official Met Office shipping forecast, inshore waters and pressure charts are linked rather than scraped because they do not provide a simple public no-key browser API suitable for a static GitHub Pages app.
 
-1. fetches live wind from Open-Meteo as a planning aid;
-2. links directly to official Met Office / EasyTide sources;
-3. keeps official tide and forecast fallback data in `data.js`, which you can update manually.
+## Upload to GitHub Pages
 
-If you want fully automatic official-source refreshes, the next step is to move from GitHub Pages to a small backend/proxy, for example Netlify Functions, Cloudflare Workers, or a server app.
+Upload/replace the contents of this folder at the repository root, including `.nojekyll`, then open:
 
-## Updating on GitHub
-
-Upload/replace these files at the top level of your repository:
-
-- `index.html`
-- `styles.css`
-- `app.js`
-- `data.js`
-- the `assets` folder
-- `README.md`
-
-Do not upload the ZIP itself.
-
-## Daily manual update
-
-Edit `data.js`:
-
-- `shipping`
-- `inshore`
-- `tides.today`
-- `tides.tomorrow`
-
-The app will automatically label those entries as today and tomorrow.
-
-
-## v4 asset fix
-
-This version includes a `.nojekyll` file and points tidal stream charts at raw GitHub image URLs. This avoids GitHub Pages/Jekyll asset path issues.
+```text
+https://admorris-lgtm.github.io/Falmouth-Sailing/?v=5
+```

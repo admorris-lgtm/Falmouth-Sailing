@@ -2,21 +2,10 @@ window.APP_CONFIG = {
   locationName: "Falmouth",
   lat: 50.1526,
   lon: -5.0663,
-  fallbackIssued: "Edit this in data.js after checking official sources",
-  shipping: {
-    area: "Plymouth",
-    issued: "Manual fallback — replace with the latest Met Office issue time",
-    valid: "Manual fallback — replace with the latest validity period",
-    rows: [
-      ["Wind", "Replace with latest Plymouth shipping forecast."],
-      ["Sea state", "Replace with latest Plymouth sea-state forecast."],
-      ["Weather", "Replace with latest Plymouth weather text."],
-      ["Visibility", "Replace with latest Plymouth visibility text."]
-    ]
+  notes: {
+    liveData: "Wind, model tide height, model sea state and model ocean-current data are fetched fresh whenever the app opens.",
+    navigationWarning: "Open-Meteo tide heights are modelled sea-level height above mean sea level, not official local tide-table heights above chart datum. Use official tide tables, MSI and harbour information for navigation-critical decisions."
   },
-  inshore: [
-    { title: "Lyme Regis to Land’s End including Isles of Scilly", text: "Replace with the latest Met Office inshore waters forecast." }
-  ],
   pressureCharts: [
     { label: "Analysis", note: "Open official chart sequence and scroll from current analysis." },
     { label: "+12h", note: "Check isobar spacing and fronts over SW approaches." },
@@ -24,22 +13,6 @@ window.APP_CONFIG = {
     { label: "+36h", note: "Look for the next front or ridge." },
     { label: "+48h", note: "Confirm trend before relying on the next day." }
   ],
-  // Replace these tide values each morning from EasyTide or your preferred official tide table.
-  // The app changes the labels to today/tomorrow automatically, but official tide times do not auto-fetch from this static app.
-  tides: {
-    today: [
-      { time: "01:46", type: "Low water", height: 1.10 },
-      { time: "07:36", type: "High water", height: 4.60 },
-      { time: "13:58", type: "Low water", height: 1.10 },
-      { time: "19:46", type: "High water", height: 4.80 }
-    ],
-    tomorrow: [
-      { time: "02:38", type: "Low water", height: 1.20 },
-      { time: "08:31", type: "High water", height: 4.50 },
-      { time: "14:50", type: "Low water", height: 1.20 },
-      { time: "20:42", type: "High water", height: 4.70 }
-    ]
-  },
   streamCharts: [
     { label: "5 before HW Devonport", file: "https://raw.githubusercontent.com/admorris-lgtm/Falmouth-Sailing/main/assets/tidal-streams/05-before-hw-devonport.png" },
     { label: "3 before HW Devonport", file: "https://raw.githubusercontent.com/admorris-lgtm/Falmouth-Sailing/main/assets/tidal-streams/03-before-hw-devonport.png" },

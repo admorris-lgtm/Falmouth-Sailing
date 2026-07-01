@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Falmouth Sailing Decision Pack v3</title>
+  <title>Falmouth Sailing Decision Pack v5</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -11,7 +11,7 @@
     <div>
       <p class="date-line" id="dateLine">Falmouth · loading dates…</p>
       <h1>Falmouth sailing decision pack</h1>
-      <p class="subtitle">Today and tomorrow: official forecast links, live hourly wind, tide tables, an interactive tidal curve, pressure-chart access and the tidal-stream atlas you added.</p>
+      <p class="subtitle">Today and tomorrow: official forecast links, live hourly wind, live model tide curves and high/low estimates, sea-state/current model data, pressure-chart access and the tidal-stream atlas you added.</p>
       <div class="hero-actions">
         <a href="#today" class="button primary">Today section</a>
         <a href="#tomorrow" class="button">Tomorrow section</a>
@@ -20,7 +20,7 @@
     </div>
     <aside class="notice">
       <strong>Live data boundary</strong>
-      <p>This static GitHub Pages app can fetch live open weather data. Official Met Office marine text, Admiralty EasyTide and Met Office pressure images do not provide a simple public no-key browser feed, so those sections link to the official source and use the editable fallback data in <code>data.js</code>.</p>
+      <p>Wind, model tide height, sea state and model current data refresh whenever the app opens. Official Met Office marine text, Admiralty EasyTide and pressure charts remain linked source checks because they do not provide a simple public no-key browser feed for this static page.</p>
     </aside>
   </header>
 
@@ -59,7 +59,7 @@
           <div class="table-scroll"><table id="windTableToday"></table></div>
         </article>
         <article class="panel">
-          <div class="panel-header"><span>Tides</span><h3>High/low waters + curve</h3></div>
+          <div class="panel-header"><span>Live model tide</span><h3>High/low estimates + curve</h3></div>
           <div class="table-scroll"><table id="tideTableToday"></table></div>
           <div id="tideCurveToday" class="tide-curve"></div>
         </article>
@@ -76,7 +76,7 @@
           <div class="table-scroll"><table id="windTableTomorrow"></table></div>
         </article>
         <article class="panel">
-          <div class="panel-header"><span>Tides</span><h3>High/low waters + curve</h3></div>
+          <div class="panel-header"><span>Live model tide</span><h3>High/low estimates + curve</h3></div>
           <div class="table-scroll"><table id="tideTableTomorrow"></table></div>
           <div id="tideCurveTomorrow" class="tide-curve"></div>
         </article>
@@ -103,10 +103,10 @@
   </main>
 
   <footer>
-    <p>Static decision-support app. Not for navigation. Use official MSI, harbour information, tide tables and your own judgment.</p>
+    <p>Decision-support app. Not for navigation. Model tide heights are not official tide-table heights. Use official MSI, harbour information, tide tables and your own judgment.</p>
   </footer>
 
-  <script src="data.js?v=3"></script>
-  <script src="app.js?v=3"></script>
+  <script src="data.js?v=5"></script>
+  <script src="app.js?v=5"></script>
 </body>
 </html>
