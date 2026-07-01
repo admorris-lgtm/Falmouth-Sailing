@@ -46,3 +46,8 @@ Edit `data.js`:
 - `tides.tomorrow`
 
 The app will automatically label those entries as today and tomorrow.
+
+
+## v4 asset fix
+
+This version includes a `.nojekyll` file and points tidal stream charts at raw GitHub image URLs. This avoids GitHub Pages/Jekyll asset path issues.

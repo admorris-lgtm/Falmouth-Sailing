@@ -41,15 +41,15 @@ window.APP_CONFIG = {
     ]
   },
   streamCharts: [
-    { label: "5 before HW Devonport", file: "assets/tidal-streams/05-before-hw-devonport.png" },
-    { label: "3 before HW Devonport", file: "assets/tidal-streams/03-before-hw-devonport.png" },
-    { label: "1 before HW Devonport", file: "assets/tidal-streams/01-before-hw-devonport.png" },
-    { label: "High water Devonport", file: "assets/tidal-streams/00-high-water-devonport.png" },
-    { label: "1 after HW Devonport", file: "assets/tidal-streams/01-after-hw-devonport.png" },
-    { label: "2 after HW Devonport", file: "assets/tidal-streams/02-after-hw-devonport.png" },
-    { label: "3 after HW Devonport", file: "assets/tidal-streams/03-after-hw-devonport.png" },
-    { label: "4 after HW Devonport", file: "assets/tidal-streams/04-after-hw-devonport.png" },
-    { label: "5 after HW Devonport", file: "assets/tidal-streams/05-after-hw-devonport.png" },
-    { label: "6 after HW Devonport", file: "assets/tidal-streams/06-after-hw-devonport.png" }
+    { label: "5 before HW Devonport", file: "https://raw.githubusercontent.com/admorris-lgtm/Falmouth-Sailing/main/assets/tidal-streams/05-before-hw-devonport.png" },
+    { label: "3 before HW Devonport", file: "https://raw.githubusercontent.com/admorris-lgtm/Falmouth-Sailing/main/assets/tidal-streams/03-before-hw-devonport.png" },
+    { label: "1 before HW Devonport", file: "https://raw.githubusercontent.com/admorris-lgtm/Falmouth-Sailing/main/assets/tidal-streams/01-before-hw-devonport.png" },
+    { label: "High water Devonport", file: "https://raw.githubusercontent.com/admorris-lgtm/Falmouth-Sailing/main/assets/tidal-streams/00-high-water-devonport.png" },
+    { label: "1 after HW Devonport", file: "https://raw.githubusercontent.com/admorris-lgtm/Falmouth-Sailing/main/assets/tidal-streams/01-after-hw-devonport.png" },
+    { label: "2 after HW Devonport", file: "https://raw.githubusercontent.com/admorris-lgtm/Falmouth-Sailing/main/assets/tidal-streams/02-after-hw-devonport.png" },
+    { label: "3 after HW Devonport", file: "https://raw.githubusercontent.com/admorris-lgtm/Falmouth-Sailing/main/assets/tidal-streams/03-after-hw-devonport.png" },
+    { label: "4 after HW Devonport", file: "https://raw.githubusercontent.com/admorris-lgtm/Falmouth-Sailing/main/assets/tidal-streams/04-after-hw-devonport.png" },
+    { label: "5 after HW Devonport", file: "https://raw.githubusercontent.com/admorris-lgtm/Falmouth-Sailing/main/assets/tidal-streams/05-after-hw-devonport.png" },
+    { label: "6 after HW Devonport", file: "https://raw.githubusercontent.com/admorris-lgtm/Falmouth-Sailing/main/assets/tidal-streams/06-after-hw-devonport.png" }
   ]
 };

@@ -187,7 +187,10 @@ function renderStreams() {
     const card = document.createElement('article');
     card.className = 'stream-card';
     card.id = id;
-    card.innerHTML = `<strong>${c.label}</strong><img src="${c.file}" alt="Tidal stream chart ${c.label}">`;
+    card.innerHTML = `<strong>${c.label}</strong><img src="${c.file}" alt="Tidal stream chart ${c.label}" loading="lazy"><p class="image-fallback" hidden>Chart did not load. <a href="${c.file}" target="_blank" rel="noreferrer">Open image directly</a></p>`;
+    const img = card.querySelector('img');
+    const fallback = card.querySelector('.image-fallback');
+    img.addEventListener('error', () => { fallback.hidden = false; });
     gallery.appendChild(card);
   });
 }
