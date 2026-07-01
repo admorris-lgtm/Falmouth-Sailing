@@ -37,7 +37,7 @@ a:hover { text-decoration: underline; }
 h1 { margin: 0; font-size: clamp(2.4rem, 7vw, 5.6rem); line-height: .92; max-width: 960px; letter-spacing: -.07em; }
 .subtitle { max-width: 820px; color: #e3f7fa; font-size: clamp(1.02rem, 2vw, 1.35rem); line-height: 1.55; }
 .hero-actions, .source-bar, .stream-controls { display: flex; flex-wrap: wrap; gap: 10px; }
-.button, .source-bar a, .stream-controls button, .tab {
+.button, .source-bar a, .stream-controls button {
   appearance: none;
   border: 1px solid rgba(255,255,255,.34);
   border-radius: 999px;
@@ -90,11 +90,12 @@ dd { margin: 0; }
 .pressure-strip { display: grid; grid-template-columns: repeat(5, minmax(150px, 1fr)); gap: 12px; overflow-x: auto; padding-bottom: 6px; }
 .pressure-card { border: 1px solid var(--line); border-radius: 16px; padding: 14px; min-width: 150px; background: linear-gradient(180deg, #eefafa, white); }
 .pressure-card span { display: block; font-size: 1.35rem; color: var(--ink); }
-.day-tabs { display: flex; gap: 10px; margin: 24px 0 14px; position: sticky; top: 0; z-index: 5; padding: 8px 0; background: rgba(243,247,246,.92); backdrop-filter: blur(10px); }
-.tab { color: var(--blue); border-color: var(--line); background: white; }
-.tab.active { background: var(--blue); color: white; }
-.day-section { display: none; }
-.day-section.active { display: block; }
+.day-anchor-note { margin: 26px 0 14px; padding: 16px 18px; border: 1px solid var(--line); border-radius: 18px; background: #fff; display: grid; gap: 4px; }
+.day-anchor-note strong { color: var(--blue); }
+.day-anchor-note span { color: var(--muted); }
+.day-section { display: block; scroll-margin-top: 14px; margin-top: 24px; padding-top: 4px; }
+.day-section + .day-section { margin-top: 38px; }
+.day-today .section-title, .day-tomorrow .section-title { border-left: 6px solid var(--accent); padding-left: 14px; }
 .section-title { margin: 18px 0 12px; }
 .statusline { margin-bottom: 12px; color: var(--muted); font-size: .95rem; }
 .chart-wrap { height: 260px; width: 100%; }

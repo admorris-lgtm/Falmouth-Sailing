@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Falmouth Sailing Decision Pack</title>
+  <title>Falmouth Sailing Decision Pack v3</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -13,8 +13,8 @@
       <h1>Falmouth sailing decision pack</h1>
       <p class="subtitle">Today and tomorrow: official forecast links, live hourly wind, tide tables, an interactive tidal curve, pressure-chart access and the tidal-stream atlas you added.</p>
       <div class="hero-actions">
-        <a href="#today" class="button primary">Today</a>
-        <a href="#tomorrow" class="button">Tomorrow</a>
+        <a href="#today" class="button primary">Today section</a>
+        <a href="#tomorrow" class="button">Tomorrow section</a>
         <a href="#streams" class="button">Tidal streams</a>
       </div>
     </div>
@@ -44,12 +44,12 @@
       </article>
     </section>
 
-    <section class="day-tabs" aria-label="Choose day">
-      <button class="tab active" data-day="today" id="todayTab">Today</button>
-      <button class="tab" data-day="tomorrow" id="tomorrowTab">Tomorrow</button>
+    <section class="day-anchor-note">
+      <strong>Today and tomorrow are shown below as separate sections.</strong>
+      <span>The headings update automatically each day. Use the top buttons to jump between them.</span>
     </section>
 
-    <section id="today" class="day-section active" data-day-panel="today">
+    <section id="today" class="day-section day-today" data-day-panel="today">
       <div class="section-title"><span id="todayLabel">Today</span><h2>Wind and tide</h2></div>
       <div class="grid two">
         <article class="panel wide-chart">
@@ -66,7 +66,7 @@
       </div>
     </section>
 
-    <section id="tomorrow" class="day-section" data-day-panel="tomorrow">
+    <section id="tomorrow" class="day-section day-tomorrow" data-day-panel="tomorrow">
       <div class="section-title"><span id="tomorrowLabel">Tomorrow</span><h2>Wind and tide</h2></div>
       <div class="grid two">
         <article class="panel wide-chart">
@@ -106,7 +106,7 @@
     <p>Static decision-support app. Not for navigation. Use official MSI, harbour information, tide tables and your own judgment.</p>
   </footer>
 
-  <script src="data.js"></script>
-  <script src="app.js"></script>
+  <script src="data.js?v=3"></script>
+  <script src="app.js?v=3"></script>
 </body>
 </html>

@@ -1,10 +1,10 @@
-# Falmouth Sailing Decision Pack v2
+# Falmouth Sailing Decision Pack v3
 
 A static GitHub Pages app for Falmouth sailing planning.
 
 ## What changed
 
-- Today and tomorrow labels update automatically every day.
+- Today and tomorrow are shown as two separate visible sections, and the labels update automatically every day.
 - Hourly wind attempts to load live from Open-Meteo in knots for Falmouth.
 - Tide sections show today and tomorrow separately.
 - The tidal curve is interactive: hover/tap the curve to see time and height.

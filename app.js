@@ -11,15 +11,13 @@ const tomorrowKey = dateKey(tomorrow);
 document.getElementById('dateLine').textContent = `${config.locationName} · ${fmtDay.format(today)} and ${fmtDay.format(tomorrow)}`;
 document.getElementById('todayLabel').textContent = `Today · ${fmtDay.format(today)}`;
 document.getElementById('tomorrowLabel').textContent = `Tomorrow · ${fmtDay.format(tomorrow)}`;
-document.getElementById('todayTab').textContent = `Today · ${today.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}`;
-document.getElementById('tomorrowTab').textContent = `Tomorrow · ${tomorrow.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}`;
+
 
 renderForecasts();
 renderPressure();
 renderTides('today', config.tides.today, 'tideTableToday', 'tideCurveToday');
 renderTides('tomorrow', config.tides.tomorrow, 'tideTableTomorrow', 'tideCurveTomorrow');
 renderStreams();
-setupTabs();
 loadWind();
 
 function addDays(date, days) { const d = new Date(date); d.setDate(d.getDate() + days); return d; }
@@ -194,13 +192,5 @@ function renderStreams() {
   });
 }
 
-function setupTabs() {
-  document.querySelectorAll('.tab').forEach(btn => btn.addEventListener('click', () => {
-    document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.day-section').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelector(`[data-day-panel="${btn.dataset.day}"]`).classList.add('active');
-  }));
-}
 
 window.addEventListener('resize', () => loadWind());
